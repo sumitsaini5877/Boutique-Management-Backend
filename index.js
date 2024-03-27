@@ -27,13 +27,7 @@ const user = require('./router/user.router')
 
 app.use("/api/user",user)
 
-app.get('/demo',(req,res)=>{
-    res.send({
-        status:200,
-        message:"this is a demo "
-    })
 
-});
 
 
 
