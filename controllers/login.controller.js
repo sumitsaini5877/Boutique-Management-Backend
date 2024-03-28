@@ -9,12 +9,39 @@ const userModel = userDB.user;
     });
 }
 const signUp = async(req,res)=>{
-    var name = req.body.name;
-    var email  = req.body.email;
-    var password = req.body.password;
-    var confirmPassword = req.body.confirmPassword;
+    let name = req.body.name;
+    let email  = req.body.email;
+    let password = req.body.password;
+    let confirmPassword = req.body.confirmPassword;
 
-    if(!name && !email && !password && !confirmPassword){
+    try{
+    
+    if(!name || !email || !password || !confirmPassword){
+        
+    res.status(400).json({
+        success:false,
+        status:400,
+        message:"Fill this empty feild"
+
+    })
+        
+      
+    }else{
+        
+    const signUp_data=new userModel({
+        name:name,
+        email:email,
+        password:password,
+        confirmPassword:confirmPassword
+    });
+
+    // Save the data to the database 
+    signUp_data.save().then(savedData=>{
+        console.log('data saved successfully',savedData);
+    }).catch(err=>{
+        console.log('Error saving data',err);
+    })
+
         res.json({
             success:true,
             status:200,
@@ -25,21 +52,45 @@ const signUp = async(req,res)=>{
                 "Confirm_Password":confirmPassword
             }]
         })
-      
+
+
+}
+}catch(error){
+    console.error('Error:',error);
+    res.status(500).json({
+        message:"Internal server  error"
+    });
+}
+}
+
+
+const logIn = (req,res)=>{
+    let email = req.body.email;
+    let password = req.body.password;
+
+    if(!email || !password){
+        res.json({
+            status:404,
+            success:false,
+            message:"Fill the  empty feild"
+        })
+       
     }else{
+        
+        res.json({
+            success:true,
+            status:200,
+            data:[{
+                "Email":email,
+                "Password":password
+            }]
+        })
+    }
 
-
-    res.send({
-        success:false,
-        status:404,
-        message:"Fill this empty feild"
-
-    })
 }
-}
 
 
 
 
 
-module.exports={demo,signUp};
+module.exports={demo,signUp,logIn};
