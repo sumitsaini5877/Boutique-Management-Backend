@@ -18,7 +18,8 @@ app.use(express.urlencoded({ extended: true }));
 
 //For Routes
 
-const user = require('./router/user.router')
+const user = require('./router/user.router');
+const addUser = require('./router/userAdd.router');
 
 
 
@@ -26,6 +27,7 @@ const user = require('./router/user.router')
 
 
 app.use("/api/user",user)
+app.use("/api/user",addUser)
 
 
 

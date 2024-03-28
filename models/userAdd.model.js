@@ -4,12 +4,21 @@ const userAddSchema = new mongoose.Schema({
     name:{
         type:String,
         require:true,
-        default:''
     },
     phone:{
         type:Number,
         require:true,
         unique:true
     },
-    
-})
+    email:{
+        type:String,
+        unique:true
+    },
+    address:{
+        type:String,
+        default:''
+    }  
+});
+const addUser = mongoose.model("addUser",userAddSchema)
+
+module.exports = {addUser}
