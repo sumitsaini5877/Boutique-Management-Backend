@@ -21,6 +21,7 @@ try{
         res.status(200).json({
             status:200,
             success:true,
+            
             data:[
                 {
                     "name":name,
