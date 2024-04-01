@@ -18,7 +18,7 @@ try{
             success:false,
             message:"Fill empty feild"
         })
-    }
+    }else{
 
         const newUser = new addUserModel({
             name: name,
@@ -42,7 +42,7 @@ try{
                 }
             ]
         })
-    
+    }
     
     
 }catch(err){
