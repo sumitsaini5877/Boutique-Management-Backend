@@ -13,6 +13,7 @@ const signUp = async(req,res)=>{
     let email  = req.body.email;
     let password = req.body.password;
     let confirmPassword = req.body.confirmPassword;
+    let username = req.body.username;
 
     try{
     
@@ -32,7 +33,8 @@ const signUp = async(req,res)=>{
         name:name,
         email:email,
         password:password,
-        confirmPassword:confirmPassword
+        confirmPassword:confirmPassword,
+        username:username
     });
 
     // Save the data to the database 
@@ -48,6 +50,7 @@ const signUp = async(req,res)=>{
             Data:[{
                 "Name":name,
                 "Email":email,
+                "username":username,
                 "Password":password,
                 "Confirm_Password":confirmPassword
             }]

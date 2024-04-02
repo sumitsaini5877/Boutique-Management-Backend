@@ -1,11 +1,13 @@
 const passport = require('passport');
 
 const LocalStrategy = require('passport-local').Strategy;
-const userDB = require('../models/user.model');
+const {user} = require('../models/user.model');
 
-passport.use(new LocalStrategy(async (email,password,done)=>{
+passport.use(new LocalStrategy(async (username,password,done)=>{
     try{
-        const exitingEmail = await userDB.findOne({email:email});
+        console.log("username",username,"password",password);
+        const exitingEmail = await user.findOne({username});
+       console.log(exitingEmail);
         if(!exitingEmail){
             return done(null,false,{message:"Incorrect Email"})
         }
