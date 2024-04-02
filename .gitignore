@@ -384,22 +384,22 @@
   ]
 }
 
-# dependencies
-/node_modules
-package-lock.json
+# Node.js dependencies
+node_modules/
 
-# IDE
-/.idea
-/.awcache
-/.vscode
+# Environment variables
+.env
 
-# misc
-npm-debug.log
+# Editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+logs/
+*.log
+
+# OS generated files
 .DS_Store
-
-# tests
-/coverage
-/.nyc_output
-
-# source
-dist
+Thumbs.db
