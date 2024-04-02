@@ -64,10 +64,11 @@ const signUp = async(req,res)=>{
 }
 
 
-const logIn = (req,res)=>{
+const logIn = async(req,res)=>{
     let email = req.body.email;
     let password = req.body.password;
 
+  try{
     if(!email || !password){
         res.json({
             status:404,
@@ -76,16 +77,40 @@ const logIn = (req,res)=>{
         })
        
     }else{
-        
-        res.json({
-            success:true,
-            status:200,
-            data:[{
-                "Email":email,
-                "Password":password
-            }]
-        })
+        const exitingEmail= await userModel.findOne({email:email});
+        const exitingPassword=exitingEmail.password == password ;
+        console.log(exitingEmail.email);
+        console.log("pasword",password);
+        if(!exitingEmail){
+            res.status(404).json({
+                success:false,
+                status:404,
+                message:"Enter Valid Email"
+            })
+        }
+        console.log(exitingPassword);
+        if(exitingPassword){
+            res.json({
+                success:true,
+                status:200,
+                data:[{
+                    "Email":email,
+                    "Password":password
+                }]
+            })
+        }else{
+            res.status(404).json({
+                success:false,
+                status:404,
+                message:"Enter Valid Password"
+            })
+        }
+       
     }
+
+  }catch(err){
+
+  }
 
 }
 

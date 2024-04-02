@@ -17,6 +17,10 @@ const userAddSchema = new mongoose.Schema({
     address:{
         type:String,
         default:''
+    },
+    createdAt:{
+        type: Date,
+        default:Date.now
     }  
 });
 const addUser = mongoose.model("addUser",userAddSchema)

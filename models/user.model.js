@@ -19,7 +19,11 @@ const userSchema =  new mongoose.Schema({
         type : String,
         require : true,
 
-    }
+    },
+    createdAt:{
+        type: Date,
+        default:Date.now
+    }  
 });
 
 const user = mongoose.model("user",userSchema)
