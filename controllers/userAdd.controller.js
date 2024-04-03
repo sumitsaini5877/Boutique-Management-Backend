@@ -64,4 +64,13 @@ try{
 
 }
 
+// fetch all customer data and details
+const allUser = async(req,res)=>{
+    try{
+
+    }catch(err){
+        
+    }
+}
+
 module.exports = {addUser}
