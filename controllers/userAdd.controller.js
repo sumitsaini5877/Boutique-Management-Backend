@@ -67,10 +67,21 @@ try{
 // fetch all customer data and details
 const allUser = async(req,res)=>{
     try{
-
+        const allUser = await addUserModel.find();
+       
+        res.status(200).json({
+            status:200,
+            success:true,
+            allUser
+        })
     }catch(err){
-        
+        console.log(err);
+        res.status(404).json({
+            status:404,
+            success:false,
+            message:"Not Found"
+        })
     }
 }
 
-module.exports = {addUser}
+module.exports = {addUser,allUser}
