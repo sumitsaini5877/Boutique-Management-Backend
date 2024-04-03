@@ -383,23 +383,3 @@
     "/lib64/ld-linux-x86-64.so.2"
   ]
 }
-
-# Node.js dependencies
-node_modules/
-
-# Environment variables
-.env
-
-# Editor files
-.vscode/
-.idea/
-*.sublime-project
-*.sublime-workspace
-
-# Logs
-logs/
-*.log
-
-# OS generated files
-.DS_Store
-Thumbs.db
