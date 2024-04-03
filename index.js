@@ -29,8 +29,8 @@ const addUser = require('./router/userAdd.router');
 
 
 
-app.use("/api/user",user)
-app.use("/api/ADDuser",localAuthMiddleware,addUser)
+app.use("/api/user",localAuthMiddleware ,user)
+app.use("/api/user",localAuthMiddleware ,addUser)
 
 
 
