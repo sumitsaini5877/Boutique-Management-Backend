@@ -11,7 +11,8 @@ passport.use(new LocalStrategy(async (username,password,done)=>{
         if(!exitingEmail){
             return done(null,false,{message:"Incorrect Email"})
         }
-        const exitingPassword = exitingEmail.password == password ? true : false;
+        const exitingPassword = exitingEmail.comparePassword(password);
+        
         if(exitingPassword){
             return done(null,exitingEmail)
         }else{

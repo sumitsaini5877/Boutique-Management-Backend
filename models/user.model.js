@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const bcrypt = require('bcrypt')
 const userSchema =  new mongoose.Schema({
     name : {
         type: String,
@@ -30,7 +31,38 @@ const userSchema =  new mongoose.Schema({
         default:Date.now
     }  
 });
+userSchema.pre('save',async function(next){
+    const user = this;// this represent the all user data and schema model
 
-const user = mongoose.model("user",userSchema)
+    // hash the password  only if it has benn modified (or is new )
+    if(!user.isModified('password')) return next();
 
+    try{
+        // hash password generation
+        const salt = await bcrypt.genSalt(10);
+
+        // hash password 
+        const hashedPassword = await  bcrypt.hash(user.password,salt);
+
+        //overrride the plain text with hased password 
+        user.password = hashedPassword;
+        next();
+    }catch(err){
+        return next(err);
+    }
+})
+userSchema.methods.comparePassword = async function(candidatePassword){
+    try{
+        // use bcrypt to compare the provided password with the hashed password
+        const isMatch = await bcrypt.compare(candidatePassword,this.password);
+        return isMatch ;
+    }catch(err){
+        throw err;
+    }
+
+}
+
+
+// crate user model 
+const user = mongoose.model("user",userSchema);
 module.exports = {user}

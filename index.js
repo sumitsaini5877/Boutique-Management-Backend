@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 8000;
 
 const passport = require('./middleware/auth')
 
@@ -29,7 +29,7 @@ const addUser = require('./router/userAdd.router');
 
 
 
-app.use("/api/user",localAuthMiddleware ,user)
+app.use("/api/user",user)
 app.use("/api/user",localAuthMiddleware ,addUser)
 
 
