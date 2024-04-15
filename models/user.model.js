@@ -46,6 +46,7 @@ userSchema.pre('save',async function(next){
 
         //overrride the plain text with hased password 
         user.password = hashedPassword;
+        user.confirmPassword = hashedPassword;
         next();
     }catch(err){
         return next(err);
