@@ -1,4 +1,4 @@
-const addUserDB = require('../models/userAdd.model')
+const addUserDB = require('../models/addCustomer.model')
 const addUserModel = addUserDB.addUser;
 
 

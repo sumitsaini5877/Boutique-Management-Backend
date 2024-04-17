@@ -22,7 +22,7 @@ const localAuthMiddleware = passport.authenticate('local',{session:false})
 //For Routes
 
 const user = require('./router/user.router');
-const addUser = require('./router/userAdd.router');
+const addUser = require('./router/addCustomer.router');
 
 
 

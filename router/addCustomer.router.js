@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const {addUser,allUser}=require('../controllers/userAdd.controller')
+const {addUser,allUser}=require('../controllers/addCustomer.controller')
 
 
 router.route('/addUser').get(addUser)
