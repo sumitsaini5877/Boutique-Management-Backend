@@ -13,3 +13,6 @@ node_modules/
 *.dll
 *.class
 
+# Ignore package lock and package files
+package-lock.json
+package.json
