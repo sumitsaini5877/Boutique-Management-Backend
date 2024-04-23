@@ -18,6 +18,7 @@ const customerAddSchema = new mongoose.Schema({
         type:String,
         default:''
     },
+    
     size : {
         type : mongoose.Schema.Types.ObjectId,
         ref :'size'
