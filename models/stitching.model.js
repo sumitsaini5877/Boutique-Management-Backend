@@ -1,10 +1,10 @@
 const mongoose = require('mongoose')
 const stitchingSchema = new mongoose.Schema({
     type : {
-        type:String,
+        type:String
     },
     typePrice : {
-        type:Number,
+        type:Number
 
     },
     quantity : {
@@ -14,8 +14,11 @@ const stitchingSchema = new mongoose.Schema({
         type:String,
     },
     additionalPrice : {
-        type:Nmuber,
+        type:Number,
     },
+    totalPrice :{
+        type:Number
+    }
     createdAt:{
         type: Date,
         default:Date.now
