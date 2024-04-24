@@ -18,7 +18,7 @@ const stitchingSchema = new mongoose.Schema({
     },
     totalPrice :{
         type:Number
-    }
+    },
     createdAt:{
         type: Date,
         default:Date.now
